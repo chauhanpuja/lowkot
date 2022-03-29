@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+{%load static%}
+{% block body %}  
+<!-- ======= Services Section ======= -->
+<section id="services" class="services">
+    <div class="container">
+
+      <div class="section-title" data-aos="zoom-in">
+        <h2>Services</h2>
+        <h3>Our Awesome <span>Programs</span></h3>
+        <p>Lowkot systematic process for bringing coherence and discipline to social activities strategies.</p>
+      </div>
+
+      <div class="row">
+        {% for i in services%}
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretc my-2">
+          <div class="icon-box" data-aos="zoom-in">
+            <div class="icon"><i class="bx bxl-dribbble"></i></div>
+            <h4><a href="/service_details/{{i.slug}}">{{i.name}}</a></h4>
+            <p>{{i.desc | safe | slice:":100"}}</p>
+          </div>
+        </div>
+        {%endfor%}
+      
+      </div>
+     
+    </div>
+  </section><!-- End Services Section -->
+
+  {%endblock%}

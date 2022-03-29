@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block body %}  
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+       
+          
+          {% for i in services%}
+          <div class="col-lg-12">
+           
+            <div class="portfolio-description">
+              <h2>{{i.name}}</h2>
+              <p>
+               {{i.desc|safe}}
+              </p>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+
+        <a href="{% url 'purchase' %}"><button class="btn btn-success">Purchase</button></a>
+
+      </div>
+    </section><!-- End Portfolio Details Section -->
+
+  </main><!-- End #main -->
+
+   {%endblock%}

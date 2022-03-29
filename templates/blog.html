@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block body %}  
+
+	
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container">
+
+        
+        <div class="row">
+          {% for i in post %}
+          <div class="col-lg-4">
+            <div class="box"  data-aos="fade-up " >
+              <img src="{{i.image.url}}" style="height:200px;width:300px;" alt="">
+              <a href="/blog_details/{{i.slug}}"><h4>{{i.title}}</h4></a>
+              <p>{{i.desc|slice:"0:200"|safe}} </p>
+             
+              <p class="my-3">{{i.date}}</p>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+        <br><br>
+       <!-- pagination -->
+    
+       <nav aria-label="...">
+        <ul class="pagination">
+        {% if post.has_previous %}	
+          <li class="page-item ">
+          <a class="page-link" href="/blog?page=1" tabindex="-1" aria-disabled="true">First</a>
+          </li>
+          <li class="page-item ">
+          <a class="page-link" href="/blog?page={{post.previous_page_number}}" tabindex="-1" aria-disabled="true">Previous</a>
+          </li>
+          {%endif%}
+
+          {%for n in totalpagelist %}
+          <li class="page-item"><a class="page-link" href="/blog?page={{n}}">{{n}}</a></li>
+         
+          {%endfor%}
+          {% if post.has_next %}	
+          
+          <li class="page-item">
+          <a class="page-link" href="/blog?page={{post.next_page_number}}">Next</a>
+          </li>
+          <li class="page-item">
+          <a class="page-link" href="/blog?page={{lastpage}}">Last</a>
+          </li>
+          {%endif%}
+        </ul>
+        </nav>
+
+
+      </div>
+
+    
+    </section><!-- End Why Us Section -->
+
+  
+   
+  
+  </main><!-- End #main -->
+
+   {% endblock %}
